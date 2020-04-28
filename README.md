@@ -1,6 +1,7 @@
 # OrderBook
 
 [![Travis-ci](https://travis-ci.org/NeilW/elm-orderbook.svg?branch=master)](https://travis-ci.org/NeilW/elm-orderbook) │ [![Fossa Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNeilW%2Felm-orderbook.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FNeilW%2Felm-orderbook?ref=badge_shield)
+
 A simple OrderBook data type supporting Market and Limit orders on both
 the Buy and Sell Side.
 
