@@ -419,4 +419,4 @@ buyQueue (OrderBook book) =
 
 sellQueue : OrderBook -> Heap Order
 sellQueue (OrderBook book) =
-    book.buySide
+    book.sellSide
