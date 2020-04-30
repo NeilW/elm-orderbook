@@ -4,6 +4,7 @@ module OrderBook exposing
     , buy, sell
     , events, sellDepth, buyDepth
     , bestBuy, bestSell, lastEvent
+    , Order
     )
 
 {-| A simple order book data type supporting Market and Limit orders on both
