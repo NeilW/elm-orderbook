@@ -4,6 +4,7 @@ module OrderBook exposing
     , buy, sell
     , events, sellDepth, buyDepth
     , bestBuy, bestSell, lastEvent
+    , sellOrders, buyOrders
     , Order
     )
 
@@ -44,6 +45,7 @@ and if there is insufficient the order may be short filled.
 
 @docs events, sellDepth, buyDepth
 @docs bestBuy, bestSell, lastEvent
+@docs sellOrders, buyOrders
 
 -}
 
@@ -287,6 +289,20 @@ createSellEvent sellRequest buyOrder =
 events : OrderBook -> List Event
 events (OrderBook book) =
     book.events
+
+
+{-| A list of unmatched orders on the sell queue
+-}
+sellOrders : OrderBook -> List Order
+sellOrders =
+    sellQueue >> Heap.toList
+
+
+{-| A list of unmatched orders on the book
+-}
+buyOrders : OrderBook -> List Order
+buyOrders =
+    buyQueue >> Heap.toList
 
 
 {-| Number of `Orders` on the buy queue.
