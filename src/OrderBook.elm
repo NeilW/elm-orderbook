@@ -295,14 +295,14 @@ events (OrderBook book) =
 -}
 sellOrders : OrderBook -> List Order
 sellOrders =
-    sellQueue >> Heap.toList
+    sellQueue >> Heap.toListUnordered
 
 
 {-| A list of unmatched orders on the book
 -}
 buyOrders : OrderBook -> List Order
 buyOrders =
-    buyQueue >> Heap.toList
+    buyQueue >> Heap.toListUnordered
 
 
 {-| Number of `Orders` on the buy queue.
