@@ -191,11 +191,16 @@ buyPassiveQueue =
 -}
 buyMaybeFillable : OrderRequest -> ( Order, Heap Order ) -> Maybe ( Order, Heap Order )
 buyMaybeFillable activeBuy ( passiveSell, newSell ) =
-    if Maybe.withDefault passiveSell.price activeBuy.price >= passiveSell.price then
-        Just ( passiveSell, newSell )
+    case activeBuy.price of
+        Nothing ->
+            Just ( passiveSell, newSell )
 
-    else
-        Nothing
+        Just buyPrice ->
+            if buyPrice >= passiveSell.price then
+                Just ( passiveSell, newSell )
+
+            else
+                Nothing
 
 
 {-| Add a limit order to the buy queue
@@ -259,11 +264,16 @@ sellPassiveQueue =
 -}
 sellMaybeFillable : OrderRequest -> ( Order, Heap Order ) -> Maybe ( Order, Heap Order )
 sellMaybeFillable activeSell ( passiveBuy, newBuy ) =
-    if passiveBuy.price >= Maybe.withDefault passiveBuy.price activeSell.price then
-        Just ( passiveBuy, newBuy )
+    case activeSell.price of
+        Nothing ->
+            Just ( passiveBuy, newBuy )
 
-    else
-        Nothing
+        Just sellPrice ->
+            if passiveBuy.price >= sellPrice then
+                Just ( passiveBuy, newBuy )
+
+            else
+                Nothing
 
 
 {-| Add a limit order to the sell queue
